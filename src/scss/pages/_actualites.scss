@@ -1,0 +1,78 @@
+@use "../base/helpers" as h;
+
+#actualites {
+
+
+
+    .top-page {
+        width: 100%;
+        height: 40vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .top-page-img {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: grayscale(1);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page-title {
+            text-align: center;
+            color: white;
+        }
+    
+    }
+
+    h2 {
+        padding: 2rem 0;
+    }
+
+}
+
+#mec_skin_2900 {
+
+
+    .mec-load-month-link, .mec-event-title, .mec-event-loc-place, .mec-event-time{
+        font-family: h.$nunito !important;
+    }
+   
+
+    h2, .mec-calendar-day, .mec-table-side-title, .mec-calendar-day-head  {
+        font-family: h.$orbit !important;
+    }
+}
+
+.featherlight {
+    .mec-single-title, .mec-date, .mec-time, .mec-location, .mec-cost, .mec-booking-button {
+        font-family: h.$orbit !important;
+    }
+
+    .mec-event-content, .mec-single-event-description {
+        font-family: h.$nunito !important;
+
+        p, h3, h2, span, a {
+            font-family: h.$nunito !important;
+        }
+    }
+}
+
+#mec_skin_2901 {
+
+    .mec-event-date, .mec-detail-button {
+        font-family: h.$orbit !important;
+    }
+
+    .mec-event-title {
+        font-family: h.$nunito !important;
+    }
+
+    .mec-event-date:after {
+        display: none;
+    }
+}

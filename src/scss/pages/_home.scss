@@ -1,0 +1,258 @@
+@use "../base/helpers" as h;
+
+#homepage {
+
+    .top-page {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+
+        .top-page-img {
+            width: 100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(1) brightness(0.5);
+        }
+
+        .page-title {
+          position: absolute;
+          width: 400px;
+          height: 200px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          z-index: 2;
+      }
+  
+    }
+
+    .section-creation, .section-atelier {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 2rem;
+        @include h.max(h.$bp-tablet-px){
+            gap: 3rem;
+        }
+
+        .text-side {
+            width: 50%;
+            @include h.max(h.$bp-tablet-px){
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::before {
+            position: absolute;
+            content: "";
+            width: 50px;
+            height: 2px;
+            background-color: black;
+            top: -10px;
+        }
+
+        .section-title::after {
+            position: absolute;
+            content: "";
+            width: 50px;
+            height: 2px;
+            background-color: black;
+            bottom: -10px;
+            left: 100px;
+        }
+
+        .section-title span {
+            color: h.$accent;
+        }
+
+        .section-text {
+            font-family: h.$nunito;
+        }
+
+        .image-side {
+            width: 35%;
+            height: auto;
+            aspect-ratio: 1/1;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+
+            @include h.max(h.$bp-tablet-px){
+                width: 65%;
+                align-self: center;
+            }
+        }
+
+        .image-side::before {
+            position: absolute;
+            content: "";
+            width: calc(100% - 1rem);
+            height: calc(100% - 1rem);
+            border: solid h.$accent 1rem;
+            left: 20px;
+            bottom: 20px;
+            z-index: -1;
+            @include h.max(h.$bp-tablet-px){
+                border: solid h.$accent 0.5rem;
+            }
+        }
+    }
+
+    .section-creation {
+        margin: 10rem 0;
+        @include h.max(h.$bp-tablet-px){
+            flex-direction: column;
+        }
+
+    }
+
+    .section-atelier {
+        margin-bottom: 10rem;
+        flex-direction: row-reverse;
+
+        @include h.max(h.$bp-tablet-px){
+            flex-direction: column;
+        }
+
+        .image-side::before {
+            left: unset;
+            right: 20px;
+
+        }
+    }
+
+    
+// ARROW BTN
+
+
+$text-arrow-space: 16px;
+$shaft-width: 2px;
+$newshaft-width: 64px;
+$shaft-thickness: 2px;
+$arrow-head-width: 8px;
+$arrow-head-thickness: $shaft-thickness;
+
+
+
+// Base
+
+
+.animated-arrow {
+  border: 2px solid black;
+  padding: 0.7rem 1rem;
+  align-self: flex-start;
+  @include h.max(h.$bp-tablet-px){
+    align-self: center;
+}
+
+}
+
+// The Arrow
+
+.the-arrow {
+  width: $shaft-width;
+ 
+  &.-right {
+    top: 2px;
+    
+    > .shaft {
+      width: $shaft-width;
+
+      &:before,
+      &:after { 
+        width: $arrow-head-width;
+      }
+      
+      &:before {
+        transform: rotate(40deg);
+      }
+      
+      &:after {
+        transform: rotate(-40deg);
+      }
+    }
+  }
+
+  > .shaft {
+    background-color: black;
+    display: block;
+    height: $shaft-thickness;
+    position: relative;
+    transition: all 0.6s ease;
+    will-change: transform;
+
+    &:before,
+    &:after {
+      background-color: black;
+      content: '';
+      display: block;
+      height: $arrow-head-thickness;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &:before {
+      transform-origin: top right;
+    }
+
+    &:after {
+      transform-origin: bottom right;
+    }
+  }
+}
+
+
+
+// Animated Arrow Button
+a:hover {
+  padding-right: $newshaft-width + 10px;
+  transition : all 0.2s;
+}
+.animated-arrow {
+  display: inline-block;
+  position: relative;
+  transition: all 0.7s;
+  
+  &:hover {
+    
+    > .link-container {    
+      > .the-arrow.-right {
+        > .shaft {
+          width: $newshaft-width;
+          
+        }
+      }
+    }
+  }
+  
+  > .link-container {
+    display: flex;
+    align-items: center;
+
+    > .text {
+      margin: 0 $text-arrow-space 0 0;
+      line-height: 1;
+    }
+    
+    > .the-arrow {
+      position: relative;
+    }
+  }
+}
+
+
+
+}
