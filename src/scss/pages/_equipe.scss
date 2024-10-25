@@ -1,0 +1,335 @@
+@use "../base/helpers" as h;
+
+#equipe {
+  .top-page {
+    width: 100%;
+    height: 40vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .top-page-img {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: grayscale(1);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page-title {
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .section-title {
+    position: relative;
+    margin: 6rem 0 3rem 0;
+  }
+
+  .section-title::before {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 2px;
+    background-color: black;
+    top: -10px;
+  }
+
+  .section-title::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 2px;
+    background-color: black;
+    bottom: -10px;
+    left: 100px;
+  }
+
+  .section-da {
+    
+
+    .section-da-container {
+      width: 60%;
+      margin: 0 auto;
+      padding: 10rem 0;
+
+      @include h.max(h.$bp-tablet-px){
+        padding: 3rem 0;
+        width: 100%;
+    }
+    }
+
+    .da-name {
+      width: 100%;
+      border-bottom: 4px black solid;
+      position: relative;
+    }
+
+    p {
+      margin: unset;
+      text-align: end;
+      line-height: 2.5;
+    }
+
+    span a {
+      line-height: 2.5;
+      position: absolute;
+      right: 0;
+    }
+
+    .animated-arrow {
+      border: unset;
+      padding: unset;
+
+      .text {
+        line-height: 2.5;
+      }
+    }
+
+    $da-width: h.clampRem(100, 200, h.$bp-mobile, h.$bp-regular);
+    $da-line: calc($da-width / 2);
+
+    .da-img-container {
+      width: $da-width;
+      height: $da-width;
+      position: absolute;
+      bottom: calc($da-line - $da-line * 2);
+      margin-left: 20px;
+    }
+
+    .da-img {
+      width: $da-width;
+      height: $da-width;
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      position: relative;
+    }
+
+    .da-img::before {
+      position: absolute;
+      content: "";
+      width: calc(100% - 1rem);
+      height: calc(100% - 1rem);
+      border: solid h.$accent 15px;
+      right: 20px;
+      bottom: 20px;
+      z-index: -1;
+      @include h.max(h.$bp-tablet-px) {
+        border: solid h.$accent 0.5rem;
+      }
+    }
+  }
+
+  .section-artists {
+    .section-artists-container {
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 10rem;
+
+      @include h.max(h.$bp-tablet-px){
+        padding: 3rem 0;
+        width: 100%;
+    }
+    }
+
+    .section-artists-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .artist-name {
+      width: 40%;
+      border-bottom: 4px black solid;
+      position: relative;
+      margin-bottom: 170px;
+
+      @include h.max(h.$bp-tablet-px){
+        width: 100%;
+        margin-bottom: 70px;
+    }
+    }
+
+    p {
+      margin: unset;
+      text-align: end;
+      line-height: 2.5;
+    }
+
+    .artist-name:nth-child(odd) p {
+      text-align: start;
+    }
+
+    $artist-width: h.clampRem(70, 150, h.$bp-mobile, h.$bp-regular);
+    $artist-line: calc($artist-width / 2);
+
+
+    .artist-img-container {
+      width: $artist-width;
+      height: $artist-width;
+      position: absolute;
+      bottom: calc($artist-line - $artist-line * 2);
+      margin-left: 17px;
+    }
+
+    .artist-name:nth-child(odd) .artist-img-container {
+      margin-right: 17px;
+      right: 0;
+    }
+
+    .artist-img {
+      width: $artist-width;
+      height: $artist-width;
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      position: relative;
+    }
+
+    .artist-img::before {
+      position: absolute;
+      content: "";
+      width: calc(100% - 1rem);
+      height: calc(100% - 1rem);
+      border: solid h.$accent 12px;
+      right: 20px;
+      bottom: 20px;
+      z-index: -1;
+      @include h.max(h.$bp-tablet-px) {
+        border: solid h.$accent 0.5rem;
+      }
+    }
+
+    .artist-name:nth-child(odd) .artist-img::before {
+      right: unset;
+      left: 20px;
+    }
+  }
+
+  .section-admin {
+    .section-admin-container {
+      width: 100%;
+      margin: 0 auto;
+      padding-top: 10rem;
+
+
+      @include h.max(h.$bp-tablet-px){
+        padding: 3rem 0;
+        width: 100%;
+    }
+    }
+
+    .section-admin-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .admin-name {
+      width: 40%;
+      border-bottom: 4px black solid;
+      position: relative;
+      margin-bottom: 200px;
+    }
+
+    p {
+      margin: unset;
+      text-align: end;
+      line-height: 2.5;
+    }
+
+    .admin-name:nth-child(odd) p {
+      text-align: start;
+    }
+
+    .admin-name:nth-child(odd) .admin-role {
+      left: 0;
+    }
+
+    .admin-role {
+      position: absolute;
+      right: 0;
+    }
+
+    $admin-width: h.clampRem(70, 150, h.$bp-mobile, h.$bp-regular);
+    $admin-line: calc($admin-width / 2);
+
+
+    .admin-img-container {
+      width: $admin-width;
+      height: $admin-width;
+      position: absolute;
+      bottom: calc($admin-line - $admin-line * 2);
+      margin-left: 17px;
+    }
+
+    .admin-name:nth-child(odd) .admin-img-container {
+      margin-right: 17px;
+      right: 0;
+    }
+
+    .admin-img {
+      width: $admin-width;
+      height: $admin-width;
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      position: relative;
+    }
+
+    .admin-img::before {
+      position: absolute;
+      content: "";
+      width: calc(100% - 1rem);
+      height: calc(100% - 1rem);
+      border: solid h.$accent 12px;
+      right: 20px;
+      bottom: 20px;
+      z-index: -1;
+      @include h.max(h.$bp-tablet-px) {
+        border: solid h.$accent 0.5rem;
+      }
+    }
+
+    .admin-name:nth-child(odd) .admin-img::before {
+      right: unset;
+      left: 20px;
+    }
+  }
+
+  .section-associated {
+    .section-content {
+      li {
+        margin-bottom: 10px;
+      }
+
+      li::marker {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .section-cie-friend {
+    .cie-friend-list {
+      width: 100%;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    a {
+      width: 20%;
+      min-width: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 100px;
+      align-items: center;
+      align-self: center;
+      background-position: center;
+      margin-bottom: 2rem;
+    }
+  }
+}

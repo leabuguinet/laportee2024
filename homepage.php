@@ -6,6 +6,8 @@ global $post;
 
 $top_page_img = get_field('top_page_img');
 $top_page_logo = get_field('top_page_logo');
+$top_page_btn = get_field('top_page_btn');
+$top_page_btn_link = get_field('top_page_btn_link');
 
 $section_title = get_field('section_title');
 $section_description = get_field('section_description');
@@ -35,7 +37,16 @@ $section_img_2 = get_field('section_img_2');
         </div>
 
         <div class="page-title" style="background-image: url('<?php echo $top_page_logo ?>');"></div>
-
+        <a class='animated-arrow' href='<?php echo $top_page_btn_link ?>'>
+                    <span class='link-container'>
+                        <span class='text'>
+                            <?php echo $top_page_btn ?>
+                        </span>
+                        <span class='the-arrow -right'>
+                            <span class='shaft'></span>
+                        </span>
+                    </span>
+            </a>
 
     </section>
 

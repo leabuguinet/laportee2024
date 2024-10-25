@@ -33,7 +33,7 @@ h1 {
 
 h2 {
     font-weight: 500;
-    font-size: v.clampRem(25, 30, v.$bp-mobile, v.$bp-regular);
+    font-size: v.clampRem(22, 30, v.$bp-mobile, v.$bp-regular);
     margin-bottom: 1rem;
 }
 
@@ -45,6 +45,7 @@ h3 {
 
 p {
     margin-bottom: 3rem;
+    font-size: v.clampRem(12, 16, v.$bp-mobile, v.$bp-regular);
 } 
 
 a {
@@ -59,7 +60,8 @@ ul {
 
 li {
     //list-style: square;
-    list-style-type: "⬥";
+    list-style-type: "⬥  ";
+    font-size: v.clampRem(12, 16, v.$bp-mobile, v.$bp-regular);
 }
 
 .page-title {
@@ -67,3 +69,121 @@ li {
     font-size: v.clampRem(35, 45, v.$bp-mobile, v.$bp-regular);
 }
 
+// ARROW BTN
+
+
+$text-arrow-space: 16px;
+$shaft-width: 2px;
+$newshaft-width: 64px;
+$shaft-thickness: 2px;
+$arrow-head-width: 8px;
+$arrow-head-thickness: $shaft-thickness;
+
+
+
+// Base
+
+
+.animated-arrow {
+  border: 2px solid black;
+  padding: 0.7rem 1rem;
+  align-self: flex-start;
+  @include v.max(v.$bp-tablet-px){
+    align-self: center;
+}
+
+}
+
+// The Arrow
+
+.the-arrow {
+  width: $shaft-width;
+ 
+  &.-right {
+    top: 2px;
+    
+    > .shaft {
+      width: $shaft-width;
+
+      &:before,
+      &:after { 
+        width: $arrow-head-width;
+      }
+      
+      &:before {
+        transform: rotate(40deg);
+      }
+      
+      &:after {
+        transform: rotate(-40deg);
+      }
+    }
+  }
+
+  > .shaft {
+    background-color: black;
+    display: block;
+    height: $shaft-thickness;
+    position: relative;
+    transition: all 0.6s ease;
+    will-change: transform;
+
+    &:before,
+    &:after {
+      background-color: black;
+      content: '';
+      display: block;
+      height: $arrow-head-thickness;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &:before {
+      transform-origin: top right;
+    }
+
+    &:after {
+      transform-origin: bottom right;
+    }
+  }
+}
+
+
+
+// Animated Arrow Button
+.animated-arrow:hover {
+  padding-right: $newshaft-width + 10px;
+  transition : all 0.2s;
+}
+.animated-arrow {
+  display: inline-block;
+  position: relative;
+  transition: all 0.7s;
+  
+  &:hover {
+    
+    > .link-container {    
+      > .the-arrow.-right {
+        > .shaft {
+          width: $newshaft-width;
+          
+        }
+      }
+    }
+  }
+  
+  > .link-container {
+    display: flex;
+    align-items: center;
+
+    > .text {
+      margin: 0 $text-arrow-space 0 0;
+      line-height: 1;
+    }
+    
+    > .the-arrow {
+      position: relative;
+    }
+  }
+}

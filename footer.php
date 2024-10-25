@@ -1,6 +1,8 @@
 <?php 
     //get_template_part('template-parts/footer-part');
-    wp_footer(); ?>
+    wp_footer(); 
+    $logoLaPortee = get_field('logo');
+    ?>
 
 <footer>
 
@@ -23,8 +25,12 @@
 
     </div>
 
-</div>
+    <div class="logo-footer">
+    <img src="<?php echo get_template_directory_uri() . '/src/logo-complet-blanc.png'; ?>" />
 
+    </div>
+
+</div>
 
 
 </footer>

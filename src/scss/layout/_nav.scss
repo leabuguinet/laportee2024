@@ -82,10 +82,37 @@ header {
         transition: all ease 1s;
         display: inline-block;
         text-transform: lowercase;
+
+        display: block;
+        position: relative;
       }
+
+      a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 0.1em;
+        background-color: white;
+        opacity: 0;
+        transition: opacity 300ms, transform 300ms;
+      }
+
+      /* Slide in */
+
+        a::after {
+          //opacity: 1;
+          transform: translate3d(-30%, 0, 0);
+        }
+
+        a:hover::after,
+        a:focus::after{
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
   
       .menu-item a:hover {
-        //transform: translateY(-10px);
         color: h.$hoverlink;
       }
   

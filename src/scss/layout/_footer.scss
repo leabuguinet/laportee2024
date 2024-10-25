@@ -16,12 +16,26 @@ footer {
         display: flex;
         justify-content:space-between;
 
+        @include h.max(h.$bp-tablet-px){
+            flex-direction: column;
+            gap:2rem;
+        }
+
         div {
             width: 20%;
+
+            @include h.max(h.$bp-tablet-px){
+                width: 100%;
+            }
         }
 
         .quote {
             position: relative;
+
+            @include h.max(h.$bp-tablet-px){
+                width: 80%;
+                align-self: center;
+            }
         }
 
         .quote::before {
@@ -39,5 +53,53 @@ footer {
 
     #menu-footer li {
         list-style-type: none;
+
+        a {
+            text-decoration: none;
+            color: h.$menu-link;
+            transition: all ease 1s;
+            display: inline-block;
+            text-transform: lowercase;
+            width: fit-content;
+            display: block;
+            position: relative;
+            margin-bottom: 5px;
+          }
+    
+          a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 0.1em;
+            background-color: white;
+            opacity: 0;
+            transition: opacity 300ms, transform 300ms;
+          }
+    
+          /* Slide in */
+    
+            a::after {
+              //opacity: 1;
+              transform: translate3d(-30%, 0, 0);
+            }
+    
+            a:hover::after,
+            a:focus::after{
+              opacity: 1;
+              transform: translate3d(0, 0, 0);
+            }
+      
+    }
+
+    .logo-footer {
+        width: h.clampRem(100, 200, h.$bp-mobile, h.$bp-regular);
+        margin: 0 auto;
+        padding-bottom: 2rem;
+
+        img {
+            width: 100%;
+        }
     }
 }

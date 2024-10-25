@@ -22,11 +22,29 @@
 
         .page-title {
           position: absolute;
-          width: 400px;
+          width: h.clampRem(200, 400, h.$bp-mobile, h.$bp-regular);
           height: 200px;
           background-size: contain;
           background-repeat: no-repeat;
           z-index: 2;
+      }
+
+      .animated-arrow {
+        position: absolute;
+        z-index: 2;
+        color: white;
+        border: 2px solid #ffffff;
+        right: 5rem;
+        bottom: 5rem;
+
+        .shaft{
+            background-color: white;;
+        }
+
+        .shaft::before, .shaft::after {
+            color: white;
+            background-color: white;
+        }
       }
   
     }
@@ -114,6 +132,7 @@
         margin: 10rem 0;
         @include h.max(h.$bp-tablet-px){
             flex-direction: column;
+            margin: 2rem 0;
         }
 
     }
@@ -124,6 +143,7 @@
 
         @include h.max(h.$bp-tablet-px){
             flex-direction: column;
+            margin: 4rem 0;
         }
 
         .image-side::before {
@@ -134,124 +154,7 @@
     }
 
     
-// ARROW BTN
 
-
-$text-arrow-space: 16px;
-$shaft-width: 2px;
-$newshaft-width: 64px;
-$shaft-thickness: 2px;
-$arrow-head-width: 8px;
-$arrow-head-thickness: $shaft-thickness;
-
-
-
-// Base
-
-
-.animated-arrow {
-  border: 2px solid black;
-  padding: 0.7rem 1rem;
-  align-self: flex-start;
-  @include h.max(h.$bp-tablet-px){
-    align-self: center;
-}
-
-}
-
-// The Arrow
-
-.the-arrow {
-  width: $shaft-width;
- 
-  &.-right {
-    top: 2px;
-    
-    > .shaft {
-      width: $shaft-width;
-
-      &:before,
-      &:after { 
-        width: $arrow-head-width;
-      }
-      
-      &:before {
-        transform: rotate(40deg);
-      }
-      
-      &:after {
-        transform: rotate(-40deg);
-      }
-    }
-  }
-
-  > .shaft {
-    background-color: black;
-    display: block;
-    height: $shaft-thickness;
-    position: relative;
-    transition: all 0.6s ease;
-    will-change: transform;
-
-    &:before,
-    &:after {
-      background-color: black;
-      content: '';
-      display: block;
-      height: $arrow-head-thickness;
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    &:before {
-      transform-origin: top right;
-    }
-
-    &:after {
-      transform-origin: bottom right;
-    }
-  }
-}
-
-
-
-// Animated Arrow Button
-a:hover {
-  padding-right: $newshaft-width + 10px;
-  transition : all 0.2s;
-}
-.animated-arrow {
-  display: inline-block;
-  position: relative;
-  transition: all 0.7s;
-  
-  &:hover {
-    
-    > .link-container {    
-      > .the-arrow.-right {
-        > .shaft {
-          width: $newshaft-width;
-          
-        }
-      }
-    }
-  }
-  
-  > .link-container {
-    display: flex;
-    align-items: center;
-
-    > .text {
-      margin: 0 $text-arrow-space 0 0;
-      line-height: 1;
-    }
-    
-    > .the-arrow {
-      position: relative;
-    }
-  }
-}
 
 
 
